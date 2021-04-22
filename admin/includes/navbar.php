@@ -111,14 +111,14 @@
             </li> -->
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.php">
+                <a class="nav-link" href="news.php">
                     <i class='fas fa-paperclip fa-3x'></i>
                     <span>Новости</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.php">
+                <a class="nav-link" href="feedback.php">
                     <i class='fas fa-comment-dots fa-3x'></i>
                     <span>Обратная связь</span></a>
             </li>
@@ -131,6 +131,11 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
+            <li class="nav-item">
+                <a class="nav-link" href="../index.php">
+                    <i class="fas fa-home"></i>
+                    <span>← Назад к сайту «Sola News»</span></a>
+            </li>
         </ul>
         <!-- End of Sidebar -->
         

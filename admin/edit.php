@@ -1,7 +1,7 @@
 <?php
-include('includes/access.php');
-include('includes/header.php');
-include('includes/navbar.php');
+include 'includes/access.php';
+include 'includes/header.php';
+include 'includes/navbar.php';
 
 $connection = mysqli_connect('localhost','root','','admin');
 
@@ -29,7 +29,7 @@ if(isset($_POST['edit_btn'])){
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="text" name="edit_password" class="form-control" value="<?=md5($row['password'])?>" required>
+                        <input type="password" name="edit_password" class="form-control" value="<?=$row['password']?>" required>
                     </div>
                     <div class="form-group">
                         <label>Почта</label>

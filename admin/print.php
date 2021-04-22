@@ -9,29 +9,32 @@ echo '<pre>';
 print_r($_SESSION);
 echo '</pre>';
 
+print_r($_SESSION);
+
 $check_user = $mysql->query("SELECT * FROM `admins` WHERE `username` = '$username' AND `password` = '$password'");
 #if(mysqli_num_rows($check_user) > 0) {
     #$user = mysqli_fetch_assoc($check_user);
-    $_SESSION['user'] = [
+   /* $_SESSION['user'] = [
         "id" => 2,
         "firstname" => "Somsa",
         "username" => "Kartoshka",
         "email" => "laleli@la.leli",
         "usertype" => "admin"
-    ];
+    ];*/
 
     
     echo '<pre>';
     print_r($_SESSION);
     echo '</pre>';
-    
-    $_SESSION = [];
+
+    //$_SESSION = [];
     
     echo '<pre>';
     print_r($_SESSION);
     echo '</pre>';
 
-    var_dump(session_destroy());
+
+echo sha1('lola');
     #  header('Location: index.php');
 #} #else {
     #$_SESSION['status'] = '<div class="alert alert-danger" role="alert">Не правильный логин или пароль!</div>';

@@ -1,7 +1,8 @@
 <?php
-include_once('includes/access.php');
+include_once 'includes/access.php';
 
-require_once('connect.php');
+require_once 'connect.php';
+
 $connection = mysqli_connect('localhost','root','','admin');
 
 if(isset($_POST['updatebtn'])){
@@ -33,6 +34,7 @@ if(isset($_POST['deletebtn'])){
     if($_SESSION['user']['id'] == $id) {
         session_unset();
         header('Location: login.php');
+        exit;
     }
     
     header('Location: register.php');

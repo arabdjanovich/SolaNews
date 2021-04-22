@@ -4,14 +4,14 @@ $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
 $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
 $password = md5($_POST['password']);
+$usertype = filter_var(trim($_POST['usertype']));
 
-$mysql = new mysqli('localhost', 'root', '', 'adminpanel');
-$mysql->query("INSERT INTO `admins` (`username`, `password`, `email`, `name`) VALUES('$username', '$password', '$email', '$firstname')");
+$mysql = new mysqli('localhost', 'root', '', 'admin');
+$mysql->query("INSERT INTO `admins` (`firstname`, `username`, `password`, `email`, `usertype`) VALUES('$firstname', '$username', '$password', '$email', '$usertype')");
 
 $mysql->close();
 
-header('Location: login.php');
+header('Location: register.php?added=success');
 exit;
-
 
 ?>
