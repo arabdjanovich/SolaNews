@@ -1,9 +1,10 @@
 <?php
-include 'includes/access.php';
+session_start();
+if($_SESSION['user']['usertype'] == 'root' || $_SESSION['user']['usertype'] == 'Administrator') {
+
 include 'includes/header.php';
 include 'includes/navbar.php';
-
-$connection = mysqli_connect('localhost','root','','admin');
+require_once 'database/connect.php';
 
 if(isset($_POST['edit_btn'])){
     $id = $_POST['edit_id'];
@@ -44,18 +45,14 @@ if(isset($_POST['edit_btn'])){
                     </div>
                     <a href="register.php" class="btn btn-danger">Отменить</a>
                     <button type="submit" name="updatebtn" class="btn btn-primary">Изменить</button>
-            </form>
-
-<?php
+                </form>
+                
+                <?php
     }
+} 
+} else {
+    header('Location: login.php');
 }
-?>
-                    </div>
-                    </div>
-
-
-
-<?php
-include('includes/scripts.php');
+include_once 'includes/scripts.php';
 #include('includes/footer.php');
 ?>

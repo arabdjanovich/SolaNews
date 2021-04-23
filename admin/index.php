@@ -236,7 +236,7 @@ include 'includes/navbar.php';
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
 
                                             <?php
-                                                $connection = mysqli_connect('localhost', 'root', '', 'admin');
+                                                require_once 'database/connect.php';
 
                                                 $query = "SELECT `id` FROM `admins` ORDER BY `id`";
                                                 $query_run = mysqli_query($connection, $query);

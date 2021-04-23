@@ -74,7 +74,7 @@ if (isset($_SESSION['user'])) {
                                                 <label class="custom-control-label" for="customCheck">Запомнить</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">Авторизация</button>
+                                        <button type="submit" name="login" class="btn btn-primary btn-user btn-block">Авторизация</button>
                                         <!--
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google

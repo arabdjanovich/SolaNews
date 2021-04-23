@@ -1,17 +1,22 @@
 <?php
+session_start();
 
-$firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
-$username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
-$email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
-$password = md5($_POST['password']);
-$usertype = filter_var(trim($_POST['usertype']));
+if(isset($_POST['registerbtn'])){
+    $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
+    $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
+    $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
+    $password = md5($_POST['password']);
+    $usertype = filter_var(trim($_POST['usertype']));
 
-$mysql = new mysqli('localhost', 'root', '', 'admin');
-$mysql->query("INSERT INTO `admins` (`firstname`, `username`, `password`, `email`, `usertype`) VALUES('$firstname', '$username', '$password', '$email', '$usertype')");
+    require_once 'database/connect.php';
 
-$mysql->close();
+    $connection->query("INSERT INTO `admins` (`firstname`, `username`, `password`, `email`, `usertype`) VALUES('$firstname', '$username', '$password', '$email', '$usertype')");
 
-header('Location: register.php?added=success');
-exit;
+    $connection->close();
 
+    header('Location: register.php?added=success');
+    exit;
+} else {
+    header('Location: login.php');
+}
 ?>

@@ -73,9 +73,7 @@ include_once 'includes/topbar.php';
         <div class="table-responsive">
 
         <?php
-            /*require_once('connect.php');*/
-
-            $connection = mysqli_connect('localhost','root','','admin');
+            include_once 'database/connect.php';
             
             $query = "SELECT * FROM admins";
             $query_run = mysqli_query($connection, $query);

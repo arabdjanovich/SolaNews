@@ -1,6 +1,6 @@
 <?php
 $title = 'Sola News';
-require('header.php');
+require_once 'header.php';
 ?>   
 
 
@@ -3324,5 +3324,5 @@ require('header.php');
 
 
 <?php
-require_once('footer.php');
+require_once 'footer.php';
 ?>
