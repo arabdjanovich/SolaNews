@@ -86,7 +86,7 @@ if (isset($_SESSION['user'])) {
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Забыли пароль?</a>
+                                        <a class="small" href="forgot-password.php">Забыли пароль?</a>
                                     </div>
                                 </div>
                             </div>

@@ -137,7 +137,7 @@ include_once 'includes/topbar.php';
 <?php
     } else {
         header('Location: index.php');
-        $_SESSION['status'] = '<div class="alert alert-danger" role="alert"><center><strong><h1>Доступ запрещен!</h1><hr>
+        $_SESSION['status'] = '<div class="mr-auto ml-auto alert alert-danger" role="alert"><center><strong><h2>Доступ запрещен!</h2></strong><hr>
         <h4>Обратитесь к администратору!</h4></strong></center></div>';
     }
 
