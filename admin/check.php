@@ -12,13 +12,6 @@ if(isset($_POST['registerbtn'])){
     $username_check = $connection->query("SELECT * FROM `admins` WHERE `username` = '$username'");
     if(mysqli_num_rows($username_check) > 0) {
         $user = mysqli_fetch_assoc($username_check);
-        $_SESSION['user'] = [
-            "id" => $user['id'],
-            "firstname" => $user['firstname'],
-            "username" => $user['username'],
-            "email" => $user['email'],
-            "usertype" => $user['usertype']
-        ];
         header('Location: register.php');
         $_SESSION['status'] = '<div class=" alert alert-danger" role="alert"><center><h5>Логин <strong>' . $_POST['username'] . '</strong> сужествует в базе!</h5></div>';
         exit; 
@@ -27,13 +20,6 @@ if(isset($_POST['registerbtn'])){
     $email_check = $connection->query("SELECT * FROM `admins` WHERE `email` = '$email'");
     if(mysqli_num_rows($email_check) > 0) {
         $user = mysqli_fetch_assoc($email_check);
-        $_SESSION['user'] = [
-            "id" => $user['id'],
-            "firstname" => $user['firstname'],
-            "username" => $user['username'],
-            "email" => $user['email'],
-            "usertype" => $user['usertype']
-        ];
         header('Location: register.php');
         $_SESSION['status'] = '<div class=" alert alert-danger" role="alert"><center><h5>Почта <strong>' . $_POST['email'] . '</strong> сужествует в базе!</h5></div>';
         exit;
