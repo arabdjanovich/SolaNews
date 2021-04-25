@@ -61,14 +61,6 @@ include_once 'includes/topbar.php';
             </button>
         </h6>
     </div>
-<?php
-    if(isset($_SESSION['status']) != ''){
-        echo $_SESSION['status'];
-        unset($_SESSION['status']);
-    } if(isset($_GET['added'])) {
-        echo '<div class="alert alert-success" role="alert"><center><h3>Администратор Добавлен!</h3></center></div>';
-    }
-?>
     <div class="card-body">
         <div class="table-responsive">
 
@@ -102,7 +94,7 @@ include_once 'includes/topbar.php';
                         <td><?=$row['firstname'];?></td>
                         <td><?=$row['username'];?></td>
                         <!--<td><?=$row['password'];?></td> -->
-                        <td>***</td>
+                        <td>********</td>
                         <td><?=$row['email'];?></td>
                         <td><?=$row['usertype'];?></td>
                         <td>
@@ -136,9 +128,10 @@ include_once 'includes/topbar.php';
 
 <?php
     } else {
+        $_SESSION['status'] = 'Доступ запрещен!';
+        $_SESSION['status_code'] = 'error';
         header('Location: index.php');
-        $_SESSION['status'] = '<div class="mr-auto ml-auto alert alert-danger" role="alert"><center><strong><h2>Доступ запрещен!</h2></strong><hr>
-        <h4>Обратитесь к администратору!</h4></strong></center></div>';
+        exit;
     }
 
     include 'includes/scripts.php';

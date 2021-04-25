@@ -1,12 +1,12 @@
 <?php
 session_start();
+include 'includes/scripts.php';
+require_once 'database/connect.php';
 
 if(isset($_POST['login'])){
-    require_once 'database/connect.php';
 
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
     $password = md5($_POST['password']);
-
 
     $check_user = $connection->query("SELECT * FROM `admins` WHERE `username` = '$username' AND `password` = '$password'");
     if(mysqli_num_rows($check_user) > 0) {
@@ -18,15 +18,19 @@ if(isset($_POST['login'])){
             "email" => $user['email'],
             "usertype" => $user['usertype']
         ];
+        $_SESSION['status'] = 'Вы успешно авторизовались!';
+        $_SESSION['status_code'] = 'info';
         header('Location: index.php');
+        exit;
     } else {
-        $_SESSION['status'] = '<div class="alert alert-danger" role="alert">Не правильный логин или пароль!</div>';
+        $_SESSION['status'] = 'Не правильный логин или пароль!';
+        $_SESSION['status_code'] = 'error';
         header('Location: login.php');
+        exit;
     }
-
     #setcookie('user', $_SESSION['user']['username'], time() + 10);
     $connection->close();
-    } else {
+} else {
         header('Location: login.php');
     }
 ?>

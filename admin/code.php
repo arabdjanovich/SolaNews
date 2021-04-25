@@ -18,7 +18,8 @@
         $_SESSION['user']['usertype'] = $usertype;
         header('Location: register.php');
         
-        $_SESSION['status'] = '<div class="alert alert-success" role="alert"><center><h3>Данные изменены!</h3></center></div>';
+        $_SESSION['status'] = 'Данные изменены!';
+        $_SESSION['status_code'] = 'success';
         exit;
     } else {
         header('Location: login.php');
@@ -38,7 +39,8 @@
         }
         
         header('Location: register.php');
-        $_SESSION['status'] = '<div class="alert alert-danger" role="alert"><center><h3>Администратор удален!</h3></center></div>';
+        $_SESSION['status'] = 'Администратор удален!';
+        $_SESSION['status_code'] = 'warning';
         exit;
     } else {
         header('Location: login.php');

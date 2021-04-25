@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'database/connect.php';
+include 'includes/scripts.php';
 
 if(isset($_POST['registerbtn'])){
     $firstname = filter_var(trim($_POST['firstname']), FILTER_SANITIZE_STRING);
@@ -13,7 +14,8 @@ if(isset($_POST['registerbtn'])){
     if(mysqli_num_rows($username_check) > 0) {
         $user = mysqli_fetch_assoc($username_check);
         header('Location: register.php');
-        $_SESSION['status'] = '<div class=" alert alert-danger" role="alert"><center><h5>Логин <strong>' . $_POST['username'] . '</strong> сужествует в базе!</h5></div>';
+        $_SESSION['status'] = 'Логин ' . $_POST['username'] . ' сужествует в базе!';
+        $_SESSION['status_code'] = 'error';
         exit; 
     }
 
@@ -21,15 +23,20 @@ if(isset($_POST['registerbtn'])){
     if(mysqli_num_rows($email_check) > 0) {
         $user = mysqli_fetch_assoc($email_check);
         header('Location: register.php');
-        $_SESSION['status'] = '<div class=" alert alert-danger" role="alert"><center><h5>Почта <strong>' . $_POST['email'] . '</strong> сужествует в базе!</h5></div>';
+        $_SESSION['status'] = 'Почта ' . $_POST['email'] . ' сужествует в базе!';
+        $_SESSION['status_code'] = 'error';
         exit;
     }
     $connection->query("INSERT INTO `admins` (`firstname`, `username`, `password`, `email`, `usertype`) VALUES('$firstname', '$username', '$password', '$email', '$usertype')");
     $connection->close();
 
-    header('Location: register.php?added=success');
+    $_SESSION['status'] = 'Администратор добавлен!';
+    $_SESSION['status_code'] = 'success';
+    header('Location: register.php');
     exit;
-} else {
+    } else {
+    $_SESSION['status'] = 'Администратор не добавлен!';
+    $_SESSION['status_code'] = 'error';
     header('Location: login.php');
-}
+    }
 ?>

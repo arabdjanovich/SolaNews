@@ -324,11 +324,6 @@ include 'includes/navbar.php';
 
 
 <?php
-    if(isset($_SESSION['status']) && $_SESSION['status'] != ''){
-     echo $_SESSION['status'];
-     unset($_SESSION['status']);
-    }
-
     include 'includes/scripts.php';
     include 'includes/footer.php';
 ?>
